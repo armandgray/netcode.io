@@ -6,6 +6,18 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Tools
+          command: apt-get -y update && apt-get install -y wget make g++ dh-autoreconf pkg-config valgrind
+      - run:
+          name: Install premake
+          command: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha10/premake-5.0.0-alpha10-linux.tar.gz && \
+                   tar -zxvf premake-*.tar.gz && \
+                   rm premake-*.tar.gz && \
+                   mv premake5 /usr/local/bin
+      - run:
+          name: Build CMake Images
+          command: find . -exec touch {} \; && premake5 gmake && make -j32 test && cp ./bin/* /app
+      - run:
           name: Run Tests
           command: premake5 test
       - run:
