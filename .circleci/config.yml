@@ -20,6 +20,7 @@ jobs:
       - run:
           name: Run Tests
           command: premake5 test
+          
       - run:
           name: Run Valgrind
           command: premake5 valgrind
