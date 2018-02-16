@@ -11,8 +11,8 @@ jobs:
       - run:
           name: Install premake
           command: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha10/premake-5.0.0-alpha10-linux.tar.gz && \
-                   yum -y install tar && \
                    whereis tar && \
+                   yum -y install tar && \
                    tar -zxvf premake-*.tar.gz && \
                    rm premake-*.tar.gz && \
                    mv premake5 /usr/local/bin
