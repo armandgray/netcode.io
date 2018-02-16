@@ -7,10 +7,11 @@ jobs:
       - checkout
       - run:
           name: Install Tools
-          command: apt-get -y update && apt-get install -y wget make g++ dh-autoreconf pkg-config valgrind tar tar.x86_64
+          command: apt-get -y update && apt-get install -y wget make g++ dh-autoreconf pkg-config valgrind tar
       - run:
           name: Install premake
           command: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha10/premake-5.0.0-alpha10-linux.tar.gz && \
+                   yum -y install tar && \
                    whereis tar && \
                    tar -zxvf premake-*.tar.gz && \
                    rm premake-*.tar.gz && \
