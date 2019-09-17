@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: debian:stretch 
     steps:
       - checkout
       - run:
           name: Install Tools
-          command: apt-get -y update && apt-get install -y wget make g++ dh-autoreconf pkg-config valgrind
+          command: apt-get -y update && apt-get install -y wget make g++ dh-autoreconf pkg-config valgrind tar
       - run:
           name: Install premake
           command: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha10/premake-5.0.0-alpha10-linux.tar.gz && \
@@ -20,6 +20,7 @@ jobs:
       - run:
           name: Run Tests
           command: premake5 test
+
       - run:
           name: Run Valgrind
           command: premake5 valgrind
